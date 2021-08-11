@@ -7,6 +7,8 @@
   
   
   
+  <meta name="description" content="CSDNblog：https://blog.csdn.net/qq_45830025">
+  
   <title>
     AcWing算法基础课----数据结构(一) 笔记 （链表和邻接表 + 栈与队列 +KMP） |
     
@@ -69,7 +71,9 @@
       
       <h1 id="1-链表与邻接表"><a href="#1-链表与邻接表" class="headerlink" title="1.链表与邻接表"></a>1.链表与邻接表</h1><p>动态链表时间太长(new node)<br>采用:<strong>数组模拟链表</strong></p>
 <h2 id="1-数组模拟单链表-用的多的是-邻接表-存储数和图"><a href="#1-数组模拟单链表-用的多的是-邻接表-存储数和图" class="headerlink" title="1. 数组模拟单链表 (用的多的是 邻接表:存储数和图)"></a>1. 数组模拟单链表 (用的多的是 邻接表:存储数和图)</h2><p>定义 : e 值 | ne 某点next指针(空节点-1) |<br><code>int e[N],ne[N]</code><br>关联:</p>
-<p> e和ne 通过下标<br><img src="https://img-blog.csdnimg.cn/63e2b3f2c0ac4a7c80538a9b7c4f8234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODMwMDI1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>模板</p>
+<p> e和ne 通过下标<br><img src="https://img-blog.csdnimg.cn/63e2b3f2c0ac4a7c80538a9b7c4f8234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODMwMDI1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<span id="more"></span>
+<p>模板</p>
 <p>静态链表(快!)</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// head存储链表头</span></span><br><span class="line"><span class="comment">//e[]存储节点的值</span></span><br><span class="line"><span class="comment">//ne[]存储节点的next指针</span></span><br><span class="line"><span class="comment">//idx表示当前用到了哪个节点</span></span><br><span class="line"><span class="keyword">int</span> head, e[N], ne[N], idx;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    head = <span class="number">-1</span>;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在链表头插入一个数a</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    e[idx] = a, ne[idx] = head, head = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> x)</span></span>&#123; <span class="comment">//将x插入到下标为k的点后面</span></span><br><span class="line">    e[idx]=x;</span><br><span class="line">    ne[idx]=ne[k];</span><br><span class="line">    ne[k]=idx;</span><br><span class="line">    idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将头结点删除，需要保证头结点存在</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>&#123;</span><br><span class="line">    head = ne[head];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将下标是k的点后面的点删掉</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removek</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    ne[k]=ne[ne[k]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -101,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qing-ran.github.io/2021/08/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80%E7%AC%94%E8%AE%B0/" data-id="cks7gwqwo00088cwzhche2vvi" class="article-share-link">
+      <a data-url="https://qing-ran.github.io/2021/08/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80%E7%AC%94%E8%AE%B0/" data-id="cks7hiifb0009ywwz4zp56it9" class="article-share-link">
         Share
       </a>
       

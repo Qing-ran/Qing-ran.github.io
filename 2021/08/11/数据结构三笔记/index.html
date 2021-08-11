@@ -7,6 +7,8 @@
   
   
   
+  <meta name="description" content="CSDNblog：https://blog.csdn.net/qq_45830025">
+  
   <title>
     AcWing算法基础课----数据结构(三) 笔记 （Hash + 字符串哈希 + STL应用） |
     
@@ -71,6 +73,7 @@
 <h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>1、 x mod len(质数)<br>2、 冲突</p>
 <p>解决冲突：</p>
 <h3 id="1-开放寻址法"><a href="#1-开放寻址法" class="headerlink" title="1.开放寻址法"></a>1.开放寻址法</h3><p>数组开的范围一般为题目给定的2~3倍</p>
+<span id="more"></span>
 <p>模板：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> h[N];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果x在哈希表中，返回x的下标；如果x不在哈希表中，返回x应该插入的位置</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t = (x % N + N) % N;</span><br><span class="line">        <span class="keyword">while</span> (h[t] != null &amp;&amp; h[t] != x)</span><br><span class="line">        &#123;</span><br><span class="line">            t ++ ;</span><br><span class="line">            <span class="keyword">if</span> (t == N) t = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
@@ -113,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qing-ran.github.io/2021/08/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%89%E7%AC%94%E8%AE%B0/" data-id="cks7gwqwp00098cwzgihmbxp0" class="article-share-link">
+      <a data-url="https://qing-ran.github.io/2021/08/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%89%E7%AC%94%E8%AE%B0/" data-id="cks7hiifc000aywwzg5fagj6v" class="article-share-link">
         Share
       </a>
       

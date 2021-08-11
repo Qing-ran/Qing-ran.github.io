@@ -7,6 +7,8 @@
   
   
   
+  <meta name="description" content="CSDNblog：https://blog.csdn.net/qq_45830025">
+  
   <title>
     AcWing算法基础课----数学知识(一) 笔记 (数论 质数 + 约数) |
     
@@ -71,7 +73,7 @@
 <h2 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h2><p><strong>定义</strong>:<br>质数(素数)是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。</p>
 <h3 id="试除法判定质数-O-sqrt-n"><a href="#试除法判定质数-O-sqrt-n" class="headerlink" title="试除法判定质数   O(sqrt(n))"></a>试除法判定质数   O(sqrt(n))</h3><p>模板:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_prime</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x / i; i ++ )</span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<span id="more"></span>
 <h3 id="试除法分解质因数-O-logn-O-sqrt-n"><a href="#试除法分解质因数-O-logn-O-sqrt-n" class="headerlink" title="试除法分解质因数   O(logn)~O(sqrt(n))"></a>试除法分解质因数   O(logn)~O(sqrt(n))</h3><p>从小到大枚举所有数<br>n中最多只包含一个大于sqrt(n)的质因子</p>
 <p> 模板:<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//从小到大枚举所有数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x / i; i ++ )</span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)   <span class="comment">//成立则 i 一定是质数</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (x % i == <span class="number">0</span>) x /= i, s ++ ;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">1</span>) cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="朴素筛法求素数-O-nlogn"><a href="#朴素筛法求素数-O-nlogn" class="headerlink" title="朴素筛法求素数    O(nlogn)"></a>朴素筛法求素数    O(nlogn)</h3><p>优化后 <code>O(nlog(logn))≈O(n)</code><br>优化后为:<strong>埃式筛法</strong></p>
@@ -98,7 +100,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qing-ran.github.io/2021/08/11/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E4%B8%80%E7%AC%94%E8%AE%B0/" data-id="cks7gwqwm00058cwze0bghzqr" class="article-share-link">
+      <a data-url="https://qing-ran.github.io/2021/08/11/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E4%B8%80%E7%AC%94%E8%AE%B0/" data-id="cks7hiif80005ywwz0twagif5" class="article-share-link">
         Share
       </a>
       
